@@ -1,7 +1,7 @@
 <li>
-  <div class="view">
-    <label>Taste JavaScript</label>
+  <div class="view" [ngStyle]="{ display: (editMode)?'none':'block' }" (dblclick)="editMode=!editMode">
+    <label>{{name}}</label>
     <button class="destroy"></button>
   </div>
-  <input class="edit" value="Create a TodoMVC template">
+  <input class="edit" #editBox [value]="name" [ngStyle]="{ display: (!editMode)?'none':'block' }" (keypress)="changeProjectName($event, editBox.value)">
 </li>

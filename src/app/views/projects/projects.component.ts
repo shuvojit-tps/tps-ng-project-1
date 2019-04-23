@@ -6,7 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./projects.component.css']
 })
 export class ProjectsComponent implements OnInit {
-
+  projects = [
+    {
+      id: 1,
+      name: 'Project1'
+    },
+    {
+      id: 2,
+      name: 'Project2'
+    }
+  ]
   constructor() { }
 
   ngOnInit() {
