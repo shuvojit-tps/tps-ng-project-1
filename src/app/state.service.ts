@@ -26,6 +26,17 @@ export class StateService {
     this.updateStorage();
   }
 
+  editProject(id, name) {
+    const projects = this.projectsSource.value;
+    projects.forEach(project => {
+      if (project.id === id) {
+        project.name = name;
+      }
+    });
+    this.projectsSource.next(projects);
+    this.updateStorage();
+  }
+
   updateStorage() {
     localStorage.setItem('projects', JSON.stringify(this.projectsSource.value));
   }

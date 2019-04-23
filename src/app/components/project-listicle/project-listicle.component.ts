@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, Output, OnInit} from '@angular/core';
+import {StateService} from '../../state.service';
 
 @Component({
   selector: 'app-project-listicle',
@@ -16,7 +17,7 @@ export class ProjectListicleComponent implements OnInit {
 
   editMode = false;
 
-  constructor() { }
+  constructor(private stateService: StateService) { }
 
   ngOnInit() {
   }
@@ -26,9 +27,10 @@ export class ProjectListicleComponent implements OnInit {
   }
 
   changeProjectName(event, value) {
-    if (event.key === 'Enter') {
+    if (event.key === 'Enter' || event instanceof FocusEvent ) {
       this.name = value;
       this.editMode = false;
+      this.stateService.editProject(this.id, value);
     }
   }
 
