@@ -1,5 +1,5 @@
 import {Component, ElementRef, OnInit, ViewChild, ViewChildren} from '@angular/core';
-import {StateService} from '../../state.service';
+import {ProjectStateService} from '../../services/project-state.service';
 
 @Component({
   selector: 'app-projects',
@@ -10,7 +10,7 @@ export class ProjectsComponent implements OnInit {
   projects = [];
   @ViewChild('addProjectBox') addProjectBox: ElementRef;
 
-  constructor(private stateService: StateService) { }
+  constructor(private stateService: ProjectStateService) { }
 
   ngOnInit() {
     this.stateService.currentProjects.subscribe(projects => this.projects = projects);

@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output, OnInit} from '@angular/core';
-import {StateService} from '../../state.service';
+import {ProjectStateService} from '../../services/project-state.service';
 
 @Component({
   selector: 'app-project-listicle',
@@ -17,7 +17,7 @@ export class ProjectListicleComponent implements OnInit {
 
   editMode = false;
 
-  constructor(private stateService: StateService) { }
+  constructor(private stateService: ProjectStateService) { }
 
   ngOnInit() {
   }

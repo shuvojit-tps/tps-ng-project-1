@@ -1,7 +1,7 @@
 <li>
-  <div class="view" [ngStyle]="{ display: (editMode)?'none':'block' }" (dblclick)="editMode=!editMode">
+  <a [routerLink]="['/', 'todo', id]" class="view" [ngStyle]="{ display: (editMode)?'none':'block' }" (dblclick)="editMode=!editMode" title="Double click to edit {{ name }}">
     <label>{{name}} #{{ id }}</label>
     <button class="destroy" (click)="destroyProject()"></button>
-  </div>
+  </a>
   <input class="edit" #editBox [value]="name" [ngStyle]="{ display: (!editMode)?'none':'block' }" (blur)="changeProjectName($event, editBox.value)"  (keypress)="changeProjectName($event, editBox.value)">
 </li>

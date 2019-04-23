@@ -4,7 +4,7 @@ import {BehaviorSubject} from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class StateService {
+export class ProjectStateService {
   private projectsSource = new BehaviorSubject([]);
   currentProjects = this.projectsSource.asObservable();
 
@@ -39,6 +39,9 @@ export class StateService {
 
   updateStorage() {
     localStorage.setItem('projects', JSON.stringify(this.projectsSource.value));
+    console.log('%c Updated ',
+      'color: white; background-color: #95B46A',
+      'Projects Local Storage Updated');
   }
 
 }
