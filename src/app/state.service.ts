@@ -16,8 +16,17 @@ export class StateService {
     return this.projects;
   }
 
+  getLastId() {
+    return this.projects.reduce((t, p) => Math.max(t, p.id) , 0);
+  }
+
   addProject(name) {
-    this.projects.push({ name, id: 30 });
+    this.projects.push({ name, id: this.getLastId() + 1 });
+    this.updateStorage();
+  }
+
+  deleteProject(id) {
+    this.projects = this.projects.filter(p => p.id !== id);
     this.updateStorage();
   }
 

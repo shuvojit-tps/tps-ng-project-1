@@ -26,4 +26,8 @@ export class ProjectsComponent implements OnInit {
     }
   }
 
+  deleteProject(id) {
+    this.stateService.deleteProject(id);
+  }
+
 }
