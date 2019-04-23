@@ -5,33 +5,29 @@ import {BehaviorSubject} from 'rxjs';
   providedIn: 'root'
 })
 export class StateService {
-
-  private projects = [];
+  private projectsSource = new BehaviorSubject([]);
+  currentProjects = this.projectsSource.asObservable();
 
   constructor() {
-    this.projects = JSON.parse(localStorage.getItem('projects')) || [];
-  }
-
-  getProjects() {
-    return this.projects;
+    this.projectsSource.next(JSON.parse(localStorage.getItem('projects')) || []);
   }
 
   getLastId() {
-    return this.projects.reduce((t, p) => Math.max(t, p.id) , 0);
+    return this.projectsSource.value.reduce((t, p) => Math.max(t, p.id) , 0);
   }
 
   addProject(name) {
-    this.projects.push({ name, id: this.getLastId() + 1 });
+    this.projectsSource.next([...this.projectsSource.value, {name, id: this.getLastId() + 1}]);
     this.updateStorage();
   }
 
   deleteProject(id) {
-    this.projects = this.projects.filter(p => p.id !== id);
+    this.projectsSource.next(this.projectsSource.value.filter(p => p.id !== id));
     this.updateStorage();
   }
 
   updateStorage() {
-    localStorage.setItem('projects', JSON.stringify(this.projects));
+    localStorage.setItem('projects', JSON.stringify(this.projectsSource.value));
   }
 
 }

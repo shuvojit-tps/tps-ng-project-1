@@ -13,7 +13,7 @@ export class ProjectsComponent implements OnInit {
   constructor(private stateService: StateService) { }
 
   ngOnInit() {
-    this.projects = this.stateService.getProjects();
+    this.stateService.currentProjects.subscribe(projects => this.projects = projects);
   }
 
   addProject(event, title) {
