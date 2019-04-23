@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
 
 @Injectable({
@@ -12,8 +12,12 @@ export class ProjectStateService {
     this.projectsSource.next(JSON.parse(localStorage.getItem('projects')) || []);
   }
 
+  getProjectById(id) {
+    return this.projectsSource.value.filter(project => project.id === id)[0];
+  }
+
   getLastId() {
-    return this.projectsSource.value.reduce((t, p) => Math.max(t, p.id) , 0);
+    return this.projectsSource.value.reduce((t, p) => Math.max(t, p.id), 0);
   }
 
   addProject(name) {
