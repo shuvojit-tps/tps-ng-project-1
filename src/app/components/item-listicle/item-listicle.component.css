@@ -38,4 +38,6 @@ li:hover .priority-dropdown{
   display: block;
 }
 
-
+li:hover{
+  background: rgba(225, 225, 225, 0.42);
+}

@@ -1,4 +1,4 @@
-<li [ngClass]="{completed: selected}">
+<li [ngClass]="{completed: selected}" title="Double Click to Edit">
   <div class="view"
        [ngStyle]="{ display: (editMode)?'none':'block' }"
        (dblclick)="editMode=!editMode">

@@ -2,6 +2,7 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {ProjectStateService} from '../../services/project-state.service';
 import {TodoStateService} from '../../services/todo-state.service';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-todos',
@@ -17,7 +18,8 @@ export class TodosComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private projectStateService: ProjectStateService,
-    private todoStateService: TodoStateService
+    private todoStateService: TodoStateService,
+    private titleService: Title
   ) {
   }
 
@@ -26,6 +28,8 @@ export class TodosComponent implements OnInit {
       this.project = this.projectStateService.getProjectById(+params.id);
       if (!this.project) {
         alert('Project not found!');
+      } else {
+        this.titleService.setTitle(`Todo App - ${this.project.name}`);
       }
     });
 
@@ -45,7 +49,7 @@ export class TodosComponent implements OnInit {
     }
   }
 
-  deleteTodo(id){
+  deleteTodo(id) {
     this.todoStateService.deleteTodo(id);
   }
 

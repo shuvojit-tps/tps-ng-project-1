@@ -2,6 +2,7 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {TodoStateService} from '../../services/todo-state.service';
 import {ItemStateService} from '../../services/item-state.service';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-items',
@@ -20,7 +21,8 @@ export class ItemsComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private todoStateService: TodoStateService,
-    private itemStateService: ItemStateService
+    private itemStateService: ItemStateService,
+    private titleService: Title
   ) {
   }
 
@@ -29,6 +31,8 @@ export class ItemsComponent implements OnInit {
       this.todo = this.todoStateService.getTodoById(+params.id);
       if (!this.todo) {
         alert('Todo not found!');
+      } else {
+        this.titleService.setTitle(`Todo App - ${this.todo.name}`);
       }
     });
 
