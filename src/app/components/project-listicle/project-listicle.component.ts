@@ -17,17 +17,21 @@ export class ProjectListicleComponent implements OnInit {
 
   editMode = false;
 
-  constructor(private stateService: ProjectStateService) { }
+  constructor(private stateService: ProjectStateService) {
+  }
 
   ngOnInit() {
   }
 
-  destroyProject() {
+  destroyProject(event) {
     this.deleted.emit(this.id);
+
+    // event.stopPropagation() wasn't working
+    return false;
   }
 
   changeProjectName(event, value) {
-    if (event.key === 'Enter' || event instanceof FocusEvent ) {
+    if (event.key === 'Enter' || event instanceof FocusEvent) {
       this.name = value;
       this.editMode = false;
       this.stateService.editProject(this.id, value);

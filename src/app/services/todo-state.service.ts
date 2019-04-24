@@ -13,12 +13,15 @@ export class TodoStateService {
   }
 
   getLastId() {
-    return this.todoSource.value.reduce((t, p) => Math.max(t, p.id), 0);
+    return +localStorage.getItem('todo_last_id') || 0;
   }
 
   addTodo(name, project) {
-    this.todoSource.next([...this.todoSource.value, {name, id: this.getLastId() + 1, project}]);
+    const newId = this.getLastId() + 1;
+    this.todoSource.next([...this.todoSource.value, {name, id: newId, project}]);
     this.updateStorage();
+
+    localStorage.setItem('todo_last_id', newId.toString());
   }
 
   editTodo(id, name) {

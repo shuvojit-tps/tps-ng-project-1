@@ -17,12 +17,15 @@ export class ProjectStateService {
   }
 
   getLastId() {
-    return this.projectsSource.value.reduce((t, p) => Math.max(t, p.id), 0);
+    return +localStorage.getItem('project_last_id') || 0;
   }
 
   addProject(name) {
-    this.projectsSource.next([...this.projectsSource.value, {name, id: this.getLastId() + 1}]);
+    const newId = this.getLastId() + 1;
+    this.projectsSource.next([...this.projectsSource.value, {name, id: newId}]);
     this.updateStorage();
+
+    localStorage.setItem('project_last_id', newId.toString());
   }
 
   deleteProject(id) {
