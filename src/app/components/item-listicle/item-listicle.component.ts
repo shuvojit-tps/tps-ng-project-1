@@ -17,7 +17,11 @@ export class ItemListicleComponent implements OnInit {
   @Output() deleted = new EventEmitter<number>();
 
   editMode = false;
-  // priority = 'h';
+  PRIORITY_MAP = {
+    h: 'high',
+    m: 'med',
+    l: 'low'
+  };
 
   constructor(
     private itemStateService: ItemStateService

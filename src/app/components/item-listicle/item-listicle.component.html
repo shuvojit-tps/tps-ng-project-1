@@ -3,7 +3,7 @@
        [ngStyle]="{ display: (editMode)?'none':'block' }"
        (dblclick)="editMode=!editMode">
     <input class="toggle" type="checkbox" [checked]="selected" (click)="toggleSelected()">
-    <label>{{ name }}</label>
+    <label>{{ name }} <span class="priority-label {{ priority }}">{{ PRIORITY_MAP[priority] }}</span></label>
     <select class="priority-dropdown {{ priority }} " #priorityDropdown (change)="changePriority(priorityDropdown.value)" >
       <option value="h" [selected]="priority==='h'">High</option>
       <option value="m" [selected]="priority==='m'">Medium</option>
