@@ -34,4 +34,12 @@ export class ItemListicleComponent implements OnInit {
     this.itemStateService.deleteItem(this.id);
   }
 
+  changeItemName(event, name) {
+    if (event.key === 'Enter' || event instanceof FocusEvent) {
+      this.name = name;
+      this.editMode = false;
+      this.itemStateService.editItem(this.id, name);
+    }
+  }
+
 }

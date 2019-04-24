@@ -37,6 +37,17 @@ export class ItemStateService {
     this.updateStorage();
   }
 
+  editItem(id, name) {
+    const items = this.itemSource.value;
+    items.forEach(item => {
+      if (item.id === id) {
+        item.name = name;
+      }
+    });
+    this.itemSource.next(items);
+    this.updateStorage();
+  }
+
   deleteItem(id) {
     this.itemSource.next(this.itemSource.value.filter(t => t.id !== id));
     this.updateStorage();

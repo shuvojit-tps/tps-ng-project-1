@@ -1,8 +1,13 @@
 <li [ngClass]="{completed: selected}">
-  <div class="view">
+  <div class="view"
+       [ngStyle]="{ display: (editMode)?'none':'block' }"
+       (dblclick)="editMode=!editMode">
     <input class="toggle" type="checkbox" [checked]="selected" (click)="toggleSelected()">
     <label>{{ name }} - {{ id }}</label>
     <button class="destroy" (click)="destroyItem()"></button>
   </div>
-  <input class="edit" value="Create a TodoMVC template">
+  <input class="edit" [value]="name" #editBox
+         [ngStyle]="{ display: (!editMode)?'none':'block' }"
+         (blur)="changeItemName($event, editBox.value)"
+         (keypress)="changeItemName($event, editBox.value)">
 </li>
