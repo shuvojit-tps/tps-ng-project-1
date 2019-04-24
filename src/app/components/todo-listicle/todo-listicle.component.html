@@ -1,8 +1,7 @@
-<li class="completed">
-  <div class="view">
-    <input class="toggle" type="checkbox" checked>
-    <label>Taste JavaScript</label>
-    <button class="destroy"></button>
-  </div>
-  <input class="edit" value="Create a TodoMVC template">
+<li>
+  <a class="view" [ngStyle]="{ display: (editMode)?'none':'block' }" (dblclick)="editMode=!editMode" title="Double click to edit {{ name }}">
+    <label>{{name}} #{{ id }}</label>
+    <button class="destroy" (click)="destroyTodo()"></button>
+  </a>
+  <input class="edit" #editBox [value]="name" [ngStyle]="{ display: (!editMode)?'none':'block' }" (blur)="changeTodoName($event, editBox.value)"  (keypress)="changeTodoName($event, editBox.value)">
 </li>

@@ -21,6 +21,17 @@ export class TodoStateService {
     this.updateStorage();
   }
 
+  editTodo(id, name) {
+    const todos = this.todoSource.value;
+    todos.forEach(todo => {
+      if (todo.id === id) {
+        todo.name = name;
+      }
+    });
+    this.todoSource.next(todos);
+    this.updateStorage();
+  }
+
   updateStorage() {
     localStorage.setItem('todos', JSON.stringify(this.todoSource.value));
     console.log('%c Updated ',

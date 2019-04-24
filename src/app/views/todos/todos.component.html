@@ -6,6 +6,6 @@
 
 <section class="main">
   <ul class="todo-list">
-    <app-project-listicle *ngFor="let todo of todos" [id]="todo.id" [name]="todo.name" (deleted)="javascript.void()//deleteTodo($event);"></app-project-listicle>
+    <app-todo-listicle *ngFor="let todo of todos" [id]="todo.id" [name]="todo.name" (deleted)="javascript.void()//deleteTodo($event);"></app-todo-listicle>
   </ul>
 </section>
