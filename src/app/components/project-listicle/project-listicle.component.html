@@ -3,5 +3,8 @@
     <label>{{name}} #{{ id }}</label>
     <button class="destroy" (click)="destroyProject($event)"></button>
   </a>
-  <input class="edit" #editBox [value]="name" [ngStyle]="{ display: (!editMode)?'none':'block' }" (blur)="changeProjectName($event, editBox.value)"  (keypress)="changeProjectName($event, editBox.value)">
+  <input class="edit" #editBox [value]="name"
+         [ngStyle]="{ display: (!editMode)?'none':'block' }"
+         (blur)="changeProjectName($event, editBox.value)"
+         (keypress)="changeProjectName($event, editBox.value)">
 </li>
