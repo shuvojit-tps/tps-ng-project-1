@@ -3,9 +3,12 @@
      [ngStyle]="{ display: (editMode)?'none':'block' }"
      (dblclick)="editMode=!editMode"
      title="Double click to edit {{ name }}">
+
     <label><i class="fas fa-list-ol"></i> {{name}}</label>
     <button class="destroy" (click)="destroyTodo()"></button>
+
   </a>
+
   <input class="edit" #editBox
          [value]="name"
          [ngStyle]="{ display: (!editMode)?'none':'block' }"
