@@ -5,19 +5,24 @@ import {BehaviorSubject} from 'rxjs';
   providedIn: 'root'
 })
 export class TodoStateService {
-  private todoSource = new BehaviorSubject([]);
-  currentTodo = this.todoSource.asObservable();
 
   constructor() {
-    this.todoSource.next(JSON.parse(localStorage.getItem('todos')) || []);
+    this.todoSource.next(JSON.parse(localStorage.getItem(this.store)) || []);
   }
+  private todoSource = new BehaviorSubject([]);
+  currentTodo = this.todoSource.asObservable();
+  store = 'todos';
 
-  getLastId() {
+  static getLastId() {
     return +localStorage.getItem('todo_last_id') || 0;
   }
 
+  getTodoById(id) {
+    return this.todoSource.value.filter(todo => todo.id === id)[0];
+  }
+
   addTodo(name, project) {
-    const newId = this.getLastId() + 1;
+    const newId = TodoStateService.getLastId() + 1;
     this.todoSource.next([...this.todoSource.value, {name, id: newId, project}]);
     this.updateStorage();
 
@@ -42,7 +47,7 @@ export class TodoStateService {
   }
 
   updateStorage() {
-    localStorage.setItem('todos', JSON.stringify(this.todoSource.value));
+    localStorage.setItem(this.store, JSON.stringify(this.todoSource.value));
     console.log('%c Updated ',
       'color: white; background-color: #95B46A',
       'Todo Local Storage Updated');

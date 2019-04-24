@@ -1,0 +1,13 @@
+li label{
+  padding-left: 15px;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover{
+  background: rgba(225, 225, 225, 0.42);
+}

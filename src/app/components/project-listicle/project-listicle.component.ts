@@ -23,10 +23,9 @@ export class ProjectListicleComponent implements OnInit {
   ngOnInit() {
   }
 
-  destroyProject(event) {
+  destroyProject() {
     this.deleted.emit(this.id);
-
-    // event.stopPropagation() wasn't working
+    // replacement for event.stopPropagation()
     return false;
   }
 
