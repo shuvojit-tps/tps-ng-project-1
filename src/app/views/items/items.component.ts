@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {TodoStateService} from '../../services/todo-state.service';
 import {ItemStateService} from '../../services/item-state.service';
@@ -10,12 +10,16 @@ import {ItemStateService} from '../../services/item-state.service';
 })
 export class ItemsComponent implements OnInit {
   todo = null;
+  items = [];
+
+  @ViewChild('addItemBox') addTodoBox: ElementRef;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private todoStateService: TodoStateService,
     private itemStateService: ItemStateService
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {
@@ -24,6 +28,21 @@ export class ItemsComponent implements OnInit {
         alert('Todo not found!');
       }
     });
+
+    this.itemStateService.currentItem.subscribe(items => {
+      // Get items belonging to this todos
+      this.items = items.filter(item => item.todo === this.todo.id);
+    });
+  }
+
+  addItem(event, name) {
+    if (event.key === 'Enter') {
+      console.log('%c add ',
+        'color: white; background-color: #95B46A',
+        `Item ${name}`);
+      this.itemStateService.addItem(name, this.todo.id);
+      this.addTodoBox.nativeElement.value = '';
+    }
   }
 
 }

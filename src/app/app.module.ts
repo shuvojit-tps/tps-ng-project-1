@@ -10,6 +10,7 @@ import {TodoListicleComponent} from './components/todo-listicle/todo-listicle.co
 import {ItemsComponent} from './views/items/items.component';
 import {ProjectStateService} from './services/project-state.service';
 import {TodoStateService} from './services/todo-state.service';
+import { ItemListicleComponent } from './components/item-listicle/item-listicle.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import {TodoStateService} from './services/todo-state.service';
     TodosComponent,
     TodoListicleComponent,
     ItemsComponent,
+    ItemListicleComponent,
   ],
   imports: [
     BrowserModule,

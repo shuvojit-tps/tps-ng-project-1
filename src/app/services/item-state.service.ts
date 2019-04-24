@@ -15,7 +15,31 @@ export class ItemStateService {
   }
 
   static getLastId() {
-    return +localStorage.getItem('todo_last_id') || 0;
+    return +localStorage.getItem('item_last_id') || 0;
+  }
+
+  addItem(name, todo) {
+    const newId = ItemStateService.getLastId() + 1;
+    this.itemSource.next([...this.itemSource.value, {name, id: newId, todo, selected: false}]);
+    this.updateStorage();
+
+    localStorage.setItem('item_last_id', newId.toString());
+  }
+
+  changeSelected(id, selected) {
+    const items = this.itemSource.value;
+    items.forEach(item => {
+      if (item.id === id) {
+        item.selected = selected;
+      }
+    });
+    this.itemSource.next(items);
+    this.updateStorage();
+  }
+
+  deleteItem(id) {
+    this.itemSource.next(this.itemSource.value.filter(t => t.id !== id));
+    this.updateStorage();
   }
 
   updateStorage() {
