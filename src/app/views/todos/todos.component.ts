@@ -45,4 +45,8 @@ export class TodosComponent implements OnInit {
     }
   }
 
+  deleteTodo(id){
+    this.todoStateService.deleteTodo(id);
+  }
+
 }

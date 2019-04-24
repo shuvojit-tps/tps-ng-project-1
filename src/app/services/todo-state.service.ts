@@ -35,6 +35,12 @@ export class TodoStateService {
     this.updateStorage();
   }
 
+  deleteTodo(id) {
+    // Delete Project
+    this.todoSource.next(this.todoSource.value.filter(t => t.id !== id));
+    this.updateStorage();
+  }
+
   updateStorage() {
     localStorage.setItem('todos', JSON.stringify(this.todoSource.value));
     console.log('%c Updated ',

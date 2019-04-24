@@ -25,6 +25,8 @@ export class TodoListicleComponent implements OnInit {
   }
 
   destroyTodo() {
+    this.deleted.emit(this.id);
+    return false;
   }
 
   changeTodoName(event, name) {
