@@ -11,6 +11,7 @@ import {ItemsComponent} from './views/items/items.component';
 import {ProjectStateService} from './services/project-state.service';
 import {TodoStateService} from './services/todo-state.service';
 import { ItemListicleComponent } from './components/item-listicle/item-listicle.component';
+import { ItemFilterPipe } from './pipes/item-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ItemListicleComponent } from './components/item-listicle/item-listicle.
     TodoListicleComponent,
     ItemsComponent,
     ItemListicleComponent,
+    ItemFilterPipe,
   ],
   imports: [
     BrowserModule,

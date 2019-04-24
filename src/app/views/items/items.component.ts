@@ -12,6 +12,9 @@ export class ItemsComponent implements OnInit {
   todo = null;
   items = [];
 
+  left = 0;
+  filter = 'a';
+
   @ViewChild('addItemBox') addTodoBox: ElementRef;
 
   constructor(
@@ -32,6 +35,9 @@ export class ItemsComponent implements OnInit {
     this.itemStateService.currentItem.subscribe(items => {
       // Get items belonging to this todos
       this.items = items.filter(item => item.todo === this.todo.id);
+
+      this.left = this.items.filter(item => !item.selected).length;
+
     });
   }
 
