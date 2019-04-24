@@ -29,8 +29,15 @@ export class ProjectStateService {
   }
 
   deleteProject(id) {
+    // Delete Project
     this.projectsSource.next(this.projectsSource.value.filter(p => p.id !== id));
     this.updateStorage();
+
+    // Delete All Todos for that Project
+    let todos = JSON.parse(localStorage.getItem('todos')) || [];
+    todos = todos.filter(todo => todo.project !== id);
+    localStorage.setItem('todos', JSON.stringify(todos));
+
   }
 
   editProject(id, name) {
