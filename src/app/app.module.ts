@@ -6,6 +6,7 @@ import { AppRoutingModule} from './app-routing.module';
 import { ProjectsComponent } from './views/projects/projects.component';
 import { ProjectListicleComponent } from './components/project-listicle/project-listicle.component';
 import { TodosComponent } from './views/todos/todos.component';
+import { TodoListicleComponent } from './components/todo-listicle/todo-listicle.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { TodosComponent } from './views/todos/todos.component';
     ProjectsComponent,
     ProjectListicleComponent,
     TodosComponent,
+    TodoListicleComponent,
   ],
   imports: [
     BrowserModule,

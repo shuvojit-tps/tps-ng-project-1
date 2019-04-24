@@ -9,7 +9,7 @@ const routes: Routes = [
     component: ProjectsComponent,
   },
   {
-    path: 'todo/:id',
+    path: 'project/:id',
     component: TodosComponent,
   }
 ];

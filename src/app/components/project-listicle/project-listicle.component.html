@@ -1,5 +1,5 @@
 <li>
-  <a [routerLink]="['/', 'todo', id]" class="view" [ngStyle]="{ display: (editMode)?'none':'block' }" (dblclick)="editMode=!editMode" title="Double click to edit {{ name }}">
+  <a [routerLink]="['/', 'project', id]" class="view" [ngStyle]="{ display: (editMode)?'none':'block' }" (dblclick)="editMode=!editMode" title="Double click to edit {{ name }}">
     <label>{{name}} #{{ id }}</label>
     <button class="destroy" (click)="destroyProject()"></button>
   </a>

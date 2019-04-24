@@ -1,12 +1,11 @@
 <header class="header">
   <h1>{{ project ? project.name : 'Loading...' }}</h1>
-<!--  <input class="new-todo" placeholder="Do you have a new Project?" autofocus #addProjectBox (keypress)="addProject($event, addProjectBox.value);">-->
+  <input class="new-todo" placeholder="Do you have a new Project?" autofocus #addTodoBox (keypress)="addTodo($event, addTodoBox.value);">
 </header>
 
-<!--<section class="main">-->
-<!--  <input id="toggle-all" class="toggle-all" type="checkbox">-->
-<!--  <label for="toggle-all">Mark all as complete</label>-->
-<!--  <ul class="todo-list">-->
-<!--    <app-project-listicle *ngFor="let project of projects" [id]="project.id" [name]="project.name" (deleted)="deleteProject($event);"></app-project-listicle>-->
-<!--  </ul>-->
-<!--</section>-->
+
+<section class="main">
+  <ul class="todo-list">
+    <app-project-listicle *ngFor="let todo of todos" [id]="todo.id" [name]="todo.name" (deleted)="javascript.void()//deleteTodo($event);"></app-project-listicle>
+  </ul>
+</section>
