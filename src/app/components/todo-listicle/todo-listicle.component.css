@@ -11,3 +11,7 @@ a {
 a:hover{
   background: rgba(225, 225, 225, 0.42);
 }
+
+.fas {
+  padding: 0 10px;
+}
