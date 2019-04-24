@@ -16,6 +16,7 @@ export class ItemListicleComponent implements OnInit {
   @Output() deleted = new EventEmitter<number>();
 
   editMode = false;
+  priority = 'h';
 
   constructor(
     private itemStateService: ItemStateService
@@ -40,6 +41,10 @@ export class ItemListicleComponent implements OnInit {
       this.editMode = false;
       this.itemStateService.editItem(this.id, name);
     }
+  }
+
+  changePriority(priority) {
+    this.priority = priority;
   }
 
 }

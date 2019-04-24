@@ -12,6 +12,7 @@ import {ProjectStateService} from './services/project-state.service';
 import {TodoStateService} from './services/todo-state.service';
 import { ItemListicleComponent } from './components/item-listicle/item-listicle.component';
 import { ItemFilterPipe } from './pipes/item-filter.pipe';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ItemFilterPipe } from './pipes/item-filter.pipe';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [ProjectStateService, TodoStateService],
   bootstrap: [AppComponent]

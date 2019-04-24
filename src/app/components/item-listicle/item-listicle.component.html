@@ -4,6 +4,11 @@
        (dblclick)="editMode=!editMode">
     <input class="toggle" type="checkbox" [checked]="selected" (click)="toggleSelected()">
     <label>{{ name }} - {{ id }}</label>
+    <select class="priority-dropdown {{ priority }} " #priorityDropdown (change)="changePriority(priorityDropdown.value)" >
+      <option value="h">High</option>
+      <option value="m">Medium</option>
+      <option value="l">Low</option>
+    </select>
     <button class="destroy" (click)="destroyItem()"></button>
   </div>
   <input class="edit" [value]="name" #editBox
