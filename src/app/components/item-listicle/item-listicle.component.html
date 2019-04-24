@@ -5,9 +5,9 @@
     <input class="toggle" type="checkbox" [checked]="selected" (click)="toggleSelected()">
     <label>{{ name }} - {{ id }}</label>
     <select class="priority-dropdown {{ priority }} " #priorityDropdown (change)="changePriority(priorityDropdown.value)" >
-      <option value="h">High</option>
-      <option value="m">Medium</option>
-      <option value="l">Low</option>
+      <option value="h" [selected]="priority==='h'">High</option>
+      <option value="m" [selected]="priority==='m'">Medium</option>
+      <option value="l" [selected]="priority==='l'">Low</option>
     </select>
     <button class="destroy" (click)="destroyItem()"></button>
   </div>

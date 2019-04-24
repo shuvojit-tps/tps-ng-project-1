@@ -20,7 +20,7 @@ export class ItemStateService {
 
   addItem(name, todo) {
     const newId = ItemStateService.getLastId() + 1;
-    this.itemSource.next([...this.itemSource.value, {name, id: newId, todo, selected: false}]);
+    this.itemSource.next([...this.itemSource.value, {name, id: newId, todo, selected: false, priority: 'l'}]);
     this.updateStorage();
 
     localStorage.setItem('item_last_id', newId.toString());
@@ -31,6 +31,17 @@ export class ItemStateService {
     items.forEach(item => {
       if (item.id === id) {
         item.selected = selected;
+      }
+    });
+    this.itemSource.next(items);
+    this.updateStorage();
+  }
+
+  changePriority(id, priority) {
+    const items = this.itemSource.value;
+    items.forEach(item => {
+      if (item.id === id) {
+        item.priority = priority;
       }
     });
     this.itemSource.next(items);

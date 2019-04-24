@@ -11,12 +11,13 @@ export class ItemListicleComponent implements OnInit {
   @Input() id;
   @Input() name;
   @Input() selected: boolean;
+  @Input() priority;
 
   // Events
   @Output() deleted = new EventEmitter<number>();
 
   editMode = false;
-  priority = 'h';
+  // priority = 'h';
 
   constructor(
     private itemStateService: ItemStateService
@@ -45,6 +46,7 @@ export class ItemListicleComponent implements OnInit {
 
   changePriority(priority) {
     this.priority = priority;
+    this.itemStateService.changePriority(this.id, this.priority);
   }
 
 }
