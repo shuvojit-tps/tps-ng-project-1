@@ -7,9 +7,10 @@ import {BehaviorSubject} from 'rxjs';
 export class ProjectStateService {
   private projectsSource = new BehaviorSubject([]);
   currentProjects = this.projectsSource.asObservable();
+  store = 'projects';
 
   constructor() {
-    this.projectsSource.next(JSON.parse(localStorage.getItem('projects')) || []);
+    this.projectsSource.next(JSON.parse(localStorage.getItem(this.store)) || []);
   }
 
   getProjectById(id) {
@@ -52,7 +53,7 @@ export class ProjectStateService {
   }
 
   updateStorage() {
-    localStorage.setItem('projects', JSON.stringify(this.projectsSource.value));
+    localStorage.setItem(this.store, JSON.stringify(this.projectsSource.value));
     console.log('%c Updated ',
       'color: white; background-color: #95B46A',
       'Projects Local Storage Updated');
