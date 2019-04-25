@@ -23,7 +23,7 @@ export class ProjectListicleComponent implements OnInit {
   ngOnInit() {
   }
 
-  switchMode($event) {
+  switchMode(event) {
     event.stopPropagation();
     this.editMode = !this.editMode;
     return false;

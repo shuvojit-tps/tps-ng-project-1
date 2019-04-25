@@ -24,6 +24,13 @@ export class TodoListicleComponent implements OnInit {
   ngOnInit() {
   }
 
+  switchMode($event) {
+    event.stopPropagation();
+    this.editMode = !this.editMode;
+    return false;
+  }
+
+
   destroyTodo() {
     this.deleted.emit(this.id);
     return false;

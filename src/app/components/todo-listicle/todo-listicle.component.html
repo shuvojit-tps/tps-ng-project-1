@@ -1,10 +1,10 @@
 <li>
   <a [routerLink]="['/', 'todo', id]" class="view"
      [ngStyle]="{ display: (editMode)?'none':'block' }"
-     (dblclick)="editMode=!editMode"
      title="{{ name }}">
 
     <label><i class="fas fa-list-ol"></i> {{name}}</label>
+    <button class="editButton" (click)="switchMode($event)"><i class="fas fa-pencil-alt"></i></button>
     <button class="destroy" (click)="destroyTodo()"></button>
 
   </a>
