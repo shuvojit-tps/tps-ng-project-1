@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ProjectStateService} from '../../services/project-state.service';
 
 @Component({
@@ -21,6 +21,12 @@ export class ProjectListicleComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  switchMode($event) {
+    event.stopPropagation();
+    this.editMode = !this.editMode;
+    return false;
   }
 
   destroyProject() {

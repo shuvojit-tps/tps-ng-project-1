@@ -1,6 +1,7 @@
 <li>
-  <a [routerLink]="['/', 'project', id]" class="view" [ngStyle]="{ display: (editMode)?'none':'block' }" (dblclick)="editMode=!editMode" title="Double click to edit {{ name }}">
+  <a [routerLink]="['/', 'project', id]" class="view" [ngStyle]="{ display: (editMode)?'none':'block' }" title="{{ name }}">
     <label><i class="far fa-folder"></i> {{name}}</label>
+    <button class="editButton" (click)="switchMode($event)"><i class="fas fa-pencil-alt"></i></button>
     <button class="destroy" (click)="destroyProject()"></button>
   </a>
   <input class="edit" #editBox [value]="name"
